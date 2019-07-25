@@ -1,0 +1,190 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Dashboard | client_index  !{% endblock %}
+
+{% block body %}
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        {% include 'layouts/partials/_header.html.twig' %}
+
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+            {% include 'layouts/partials/_left_sidebar.html.twig' %}
+
+            <div class="m-grid__item  m-grid__item--fluid m-wrapper">
+
+                <div class="m-subheader">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="m-subheader__title text-uppercase">
+                                Clients
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-content">
+                    <div class="m-portlet m-portlet--mobile">
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">
+                                        All Client
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-portlet__body">
+                            <!--begin: Search Form -->
+                            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-8 order-2 order-xl-1">
+                                        <div class="form-group m-form__group row align-items-center">
+                                            <div class="col-md-4">
+                                                <div class="m-input-icon m-input-icon--left">
+                                                    <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                                                    <span class="m-input-icon__icon m-input-icon__icon--left">
+                                                        <span>
+                                                            <i class="la la-search"></i>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                                        <a href="{{ path('client_new') }}" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                            <span>
+                                                <i class="la la-cart-plus"></i>
+                                                <span>
+                                                    Add Client
+                                                </span>
+                                            </span>
+                                        </a>
+                                        <div class="m-separator m-separator--dashed d-xl-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Search Form -->
+                            <!--begin: Datatable -->
+                            <div class="m-datatable m-datatable--default m-datatable--brand m-datatable--loaded"><table class="m-datatable__table" id="m-datatable--1066050570309" style="display: block; position: static; height: auto; overflow-x: auto;" width="100%">
+                                    <thead class="m-datatable__head">
+                                    <tr class="m-datatable__row" style="height: 53px;">
+                                        <th title="Field #1" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Order ID
+											"><span style="width: 163px;">
+												Client ID
+											</span></th>
+                                        <th title="Field #2" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Owner
+											"><span style="width: 163px;">
+												Name
+											</span></th>
+                                        <th title="Field #3" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Contact
+											"><span style="width: 163px;">
+												Email
+											</span></th>
+                                        <th title="Field #4" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Car Make
+											"><span style="width: 163px;">
+												Phone
+											</span></th>
+                                        <th title="Field #5" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Car Model
+											"><span style="width: 163px;">
+												Address
+											</span></th>
+                                        <th title="Field #6" class="m-datatable__cell m-datatable__cell--sort" data-field="
+												Color
+											"><span style="width: 163px;">
+												Actions
+											</span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="m-datatable__body" style="">
+                                    {% for client in clients %}
+                                        <tr data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 43px;">
+                                            <td data-field="Order ID" class="m-datatable__cell">
+                                                <span style="width: 163px;">{{ client.id }}</span>
+                                            </td>
+                                            <td data-field="Order ID" class="m-datatable__cell">
+                                                <span style="width: 163px;">{{ client.name }}</span>
+                                            </td>
+                                            <td data-field="Order ID" class="m-datatable__cell">
+                                                <span style="width: 163px;">{{ client.email }}</span>
+                                            </td>
+                                            <td data-field="Order ID" class="m-datatable__cell">
+                                                <span style="width: 163px;">{{ client.phone }}</span>
+                                            </td>
+                                            <td data-field="Order ID" class="m-datatable__cell">
+                                                <span style="width: 163px;">{{ client.address }}</span>
+                                            </td>
+                                            <td data-field="Order ID" class="m-datatable__cell">
+												<span style="width: 163px;">
+													<a class="btn btn-outline-primary m-btn m-btn--icon m-btn--icon-only" href="{{ path('client_show', {'id': client.id}) }}">
+                                                        <i class="fa flaticon-interface-9"></i>
+                                                    </a>
+                    								<a class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only" href="{{ path('client_edit', {'id': client.id}) }}">
+                                                        <i class="fa flaticon-edit-1"></i>
+                                                    </a>
+                                                    {% include 'client/_delete_form.html.twig' %}
+												</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
+                                    {# Pagination #}
+{#                                    {{ knp_pagination_render(clients) }}#}
+                                </div>
+                            </div>
+                            <!--end: Datatable -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{#<!DOCTYPE html>#}
+
+{#<title>Client index</title>#}
+
+{#{% block body %}#}
+{#    <h1>Client index</h1>#}
+
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>Name</th>#}
+{#                <th>Email</th>#}
+{#                <th>Phone</th>#}
+{#                <th>Address</th>#}
+{#                <th>actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for client in clients %}#}
+{#            <tr>#}
+{#                <td>{{ client.id }}</td>#}
+{#                <td>{{ client.name }}</td>#}
+{#                <td>{{ client.email }}</td>#}
+{#                <td>{{ client.phone }}</td>#}
+{#                <td>{{ client.address }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
+{#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="6">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+{#    <a href="{{ path('client_new') }}">Create new</a>#}
+{#{% endblock %}#}

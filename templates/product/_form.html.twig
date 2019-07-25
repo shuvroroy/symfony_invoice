@@ -1,0 +1,39 @@
+{% form_theme form 'form/form_error.html.twig' %}
+
+{{ form_start(form, { 'attr': { 'class': 'm-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed', 'novalidate': 'novalidate' }}) }}
+    <div class="m-portlet__body">
+        <div class="form-group m-form__group row">
+            {{ form_label(form.name, null, {
+                'label': 'Product Name',
+                'label_attr': {'class': 'col-lg-2 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.name, { 'attr': { 'class': 'form-control m-input', 'placeholder': 'Enter product name' } }) }}
+                {{ form_errors(form.name) }}
+            </div>
+            {{ form_label(form.description, null, {
+                'label': 'Product Description',
+                'label_attr': {'class': 'col-lg-2 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.description, { 'attr': { 'class': 'form-control m-input', 'placeholder': 'Enter product description' } }) }}
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+        <div class="m-form__actions m-form__actions--solid">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-10">
+                    <button type="submit" class="btn btn-success">
+                        {{ button_label|default('Save') }}
+                    </button>
+                    <a href="{{ path('product_index') }}" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}

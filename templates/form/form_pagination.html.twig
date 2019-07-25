@@ -1,0 +1,94 @@
+{% if pageCount > 1 %}
+    <ul class="m-datatable__pager-nav">
+
+        {% if previous is defined %}
+            <li>
+                <a class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                    <i class="la la-angle-double-left"></i>&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <span class="page-link"><i class="la la-angle-left"></i>&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</span>
+            </li>
+        {% endif %}
+
+        {% if startPage > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+            </li>
+            {% if startPage == 3 %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+                </li>
+            {% elseif startPage != 2 %}
+                <li class="page-item disabled">
+                    <span class="page-link">&hellip;</span>
+                </li>
+            {% endif %}
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                </li>
+            {% else %}
+                <li class="page-item active">
+                    <span class="page-link">{{ page }}</span>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+
+        {% if pageCount > endPage %}
+            {% if pageCount > (endPage + 1) %}
+                {% if pageCount > (endPage + 2) %}
+                    <li class="page-item disabled">
+                        <span class="page-link">&hellip;</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">{{ pageCount -1 }}</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+            </li>
+        {% endif %}
+
+        {% if next is defined %}
+            <li class="page-item">
+                <a class="page-link" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a>
+            </li>
+        {% else %}
+            <li  class="page-item disabled">
+                <span class="page-link">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
+{#<ul class="m-datatable__pager-nav">#}
+{#    <li>#}
+{#        <a title="First" class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-double-left"></i></a>#}
+{#    </li>#}
+{#    <li>#}
+{#        <a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev m-datatable__pager-link--disabled" data-page="1" disabled="disabled">#}
+{#            <i class="la la-angle-left"></i></a></li>#}
+{#    <li style="display: none;"><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-prev" data-page="1"><i class="la la-ellipsis-h"></i></a>#}
+{#    </li>#}
+{#    <li style="display: none;">#}
+{#        <input type="text" class="m-pager-input form-control" title="Page number">#}
+{#    </li>#}
+{#    <li>#}
+{#        <a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active" data-page="1" title="1">1</a></li>#}
+{#    <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="2" title="2">2</a></li>#}
+{#    <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="3" title="3">3</a></li>#}
+{#    <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="4" title="4">4</a></li>#}
+{#    <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="5" title="5">5</a></li>#}
+{#    <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="6" title="6">6</a></li>#}
+{#    <li><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-next" data-page="7"><i class="la la-ellipsis-h"></i></a></li>#}
+{#    <li><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next" data-page="2"><i class="la la-angle-right"></i></a></li>#}
+{#    <li><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last" data-page="15"><i class="la la-angle-double-right"></i></a></li>#}
+{#</ul>#}

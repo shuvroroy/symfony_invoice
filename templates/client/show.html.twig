@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Dashboard | client_new  !{% endblock %}
+
+{% block body %}
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        {% include 'layouts/partials/_header.html.twig' %}
+
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+            {% include 'layouts/partials/_left_sidebar.html.twig' %}
+
+            <div class="m-grid__item  m-grid__item--fluid m-wrapper">
+
+                <div class="m-subheader">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="m-subheader__title text-uppercase">
+                                Clients
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-content">
+                    <div class="m-portlet m-portlet--mobile">
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">
+                                        {{ client.name }}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-portlet__body">
+                            <div>
+                                <h3>
+                                    <strong>Name: </strong>{{ client.name }}
+                                </h3>
+                            </div>
+                            <div>
+                                <h3>
+                                    <strong>Email: </strong>{{ client.email }}
+                                </h3>
+                            </div>
+                            <div>
+                                <h3>
+                                    <strong>Phone: </strong>{{ client.phone }}
+                                </h3>
+                            </div>
+                            <div>
+                                <h3>
+                                    <strong>Address: </strong>{{ client.address }}
+                                </h3>
+                            </div>
+                            <div>
+                                <h3>
+                                    <strong>CreatedAt: </strong>{{ client.createdAt|date("d/m/Y") }}
+                                </h3>
+                            </div>
+                            <div>
+                                <h3>
+                                    <strong>UpdatedAt: </strong>{{ client.updatedAt|date("d/m/Y") }}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
