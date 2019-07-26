@@ -27,7 +27,7 @@
                             <div class="m-portlet__head-caption">
                                 <div class="m-portlet__head-title">
                                     <h3 class="m-portlet__head-text">
-                                        {{ client.name }}
+                                        Client Details
                                     </h3>
                                 </div>
                             </div>
@@ -63,6 +63,7 @@
                                     <strong>UpdatedAt: </strong>{{ client.updatedAt|date("d/m/Y") }}
                                 </h3>
                             </div>
+                            {% include 'client/_delete_form.html.twig' %}
                         </div>
                     </div>
                 </div>
