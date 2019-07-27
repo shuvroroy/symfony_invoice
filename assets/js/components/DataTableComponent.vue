@@ -29,6 +29,7 @@
 
                 if (data.length <= this.perPage) {
                     this.next = false;
+                    this.prev = false;
                 }
 
                 this.totalPage = Math.ceil(data.length / this.perPage);
@@ -47,6 +48,7 @@
 
                 if (data.length <= this.perPage) {
                     this.next = false;
+                    this.prev = false;
                 }
 
                 this.totalPage = Math.ceil(data.length / this.perPage);
@@ -68,6 +70,9 @@
             search(val) {
                 if (val === '') {
                     this.next = true;
+                    if (this.pageNumber > 0) {
+                        this.prev = true;
+                    }
                 }
             },
             pageNumber() {
