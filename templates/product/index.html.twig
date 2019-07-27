@@ -25,14 +25,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-portlet__body">
+                <data-table-component :data-items="{{ products }}" inline-template>
+                    <div class="m-portlet__body">
                     <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                         <div class="row align-items-center">
                             <div class="col-xl-8 order-2 order-xl-1">
                                 <div class="form-group m-form__group row align-items-center">
                                     <div class="col-md-4">
                                         <div class="m-input-icon m-input-icon--left">
-                                            <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                                            <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" v-model="search">
                                             <span class="m-input-icon__icon m-input-icon__icon--left">
                                                 <span>
                                                     <i class="la la-search"></i>
@@ -96,44 +97,46 @@
                                 </tr>
                             </thead>
                             <tbody class="m-datatable__body" style="">
-                                {% for product in products %}
-                                <tr data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 43px;">
+                                <tr v-for="item in filteredProductList" data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 43px;">
                                     <td data-field="Order ID" class="m-datatable__cell">
-                                        <span style="width: 163px;">{{ product.id }}</span>
+                                        <span style="width: 163px;" v-text="item.id"></span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
-                                        <span style="width: 163px;">{{ product.name }}</span>
+                                        <span style="width: 163px;" v-text="item.name"></span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
-                                        <span style="width: 163px;">{{ product.description }}</span>
+                                        <span style="width: 163px;" v-text="item.description"></span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
-                                        <span style="width: 163px;">{{ product.createdAt|date("d/m/Y") }}</span>
+                                        <span style="width: 163px;">${ item.createdAt | moment }</span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
-                                        <span style="width: 163px;">{{ product.updatedAt|date("d/m/Y") }}</span>
+                                        <span style="width: 163px;">${ item.updatedAt | moment }</span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
                                         <span style="width: 163px;">
-                                            <a class="btn btn-outline-primary m-btn m-btn--icon m-btn--icon-only" href="{{ path('product_show', {'id': product.id}) }}">
+                                            <a class="btn btn-outline-primary m-btn m-btn--icon m-btn--icon-only" :href="`/product/${item.id}`">
                                                 <i class="fa flaticon-interface-9"></i>
                                             </a>
-                                            <a class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only" href="{{ path('product_edit', {'id': product.id}) }}">
+                                            <a class="btn btn-outline-accent m-btn m-btn--icon m-btn--icon-only" :href="`/product/${item.id}/edit`">
                                                 <i class="fa flaticon-edit-1"></i>
                                             </a>
-                                            {% include 'product/_delete_form.html.twig' %}
                                         </span>
                                     </td>
                                 </tr>
-                                {% endfor %}
                             </tbody>
                         </table>
                         <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
-                            {# Pagination #}
-                            {{ knp_pagination_render(products) }}
+                            <button @click="prevPage" v-show="prev">
+                                Previous
+                            </button>
+                            <button @click="nextPage" v-show="next">
+                                Next
+                            </button>
                         </div>
                     </div>
                 </div>
+                </data-table-component>
             </div>
         </div>
     </div>

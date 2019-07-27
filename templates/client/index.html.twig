@@ -57,8 +57,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--end: Search Form -->
-                        <!--begin: Datatable -->
                         <div class="m-datatable m-datatable--default m-datatable--brand m-datatable--loaded">
                             <table class="m-datatable__table" id="m-datatable--1066050570309" style="display: block; position: static; height: auto; overflow-x: auto;" width="100%">
                                 <thead class="m-datatable__head">
@@ -96,7 +94,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="m-datatable__body" style="">
-                                    <tr v-for="item in filteredList" data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 43px;">
+                                    <tr v-for="item in filteredClientList" data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 43px;">
                                         <td data-field="Order ID" class="m-datatable__cell">
                                             <span style="width: 163px;" v-text="item.id"></span>
                                         </td>
@@ -126,10 +124,14 @@
                                 </tbody>
                             </table>
                             <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
-
+                                <button @click="prevPage" v-show="prev">
+                                    Previous
+                                </button>
+                                <button @click="nextPage" v-show="next">
+                                    Next
+                                </button>
                             </div>
                         </div>
-                        <!--end: Datatable -->
                     </div>
                 </data-table-component>
             </div>

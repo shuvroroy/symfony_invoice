@@ -1,23 +1,43 @@
 <script>
-    import PaginationComponent from './PaginationComponent';
+    import moment from 'moment';
 
     export default {
         name: 'data-table-component',
-        components: {
-            PaginationComponent
-        },
         props: ['dataItems'],
         data() {
             return {
                 search: '',
-                current: 1,
-                paginate: 10,
-                total: 0,
+                pageNumber: 0,
+                totalPage: 0,
+                perPage: 10,
+                prev: false,
+                next: true,
                 items: this.dataItems
             }
         },
+        filters: {
+            moment(date) {
+                return moment(date).format('DD/MM/YYYY');
+            }
+        },
         computed: {
-            filteredList() {
+            filteredProductList() {
+                let data = this.items.filter(item => {
+                    return item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+                        item.description.toLowerCase().includes(this.search.toLowerCase());
+                });
+
+                if (data.length <= this.perPage) {
+                    this.next = false;
+                }
+
+                this.totalPage = Math.ceil(data.length / this.perPage);
+                const start = this.pageNumber * this.perPage;
+                const end = start + this.perPage;
+                return data.slice(start, end);
+
+            },
+            filteredClientList() {
                 let data = this.items.filter(item => {
                     return item.name.toLowerCase().includes(this.search.toLowerCase()) ||
                         item.email.toLowerCase().includes(this.search.toLowerCase()) ||
@@ -25,12 +45,43 @@
                         item.phone.includes(this.search);
                 });
 
-                this.total = data.length;
-                return data;
+                if (data.length <= this.perPage) {
+                    this.next = false;
+                }
+
+                this.totalPage = Math.ceil(data.length / this.perPage);
+                const start = this.pageNumber * this.perPage;
+                const end = start + this.perPage;
+                return data.slice(start, end);
+
             }
         },
-        methods: {
-
+        methods:{
+            nextPage(){
+                this.pageNumber++;
+            },
+            prevPage(){
+                this.pageNumber--;
+            }
+        },
+        watch: {
+            search(val) {
+                if (val === '') {
+                    this.next = true;
+                }
+            },
+            pageNumber() {
+                if (this.pageNumber >= (this.totalPage - 1)) {
+                    this.next = false;
+                } else {
+                    this.next = true;
+                }
+                if (this.pageNumber === 0 ) {
+                    this.prev = false;
+                } else {
+                    this.prev = true;
+                }
+            }
         }
     }
 </script>
