@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+    <div class="m-grid m-grid--hor m-grid--root m-page" id="app">
+        {% include 'layouts/partials/_header.html.twig' %}
+
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+            {% include 'layouts/partials/_left_sidebar.html.twig' %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

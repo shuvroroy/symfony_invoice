@@ -1,43 +1,33 @@
-{% extends 'layouts/base.html.twig' %}
+{% extends 'layouts/master.html.twig' %}
 
-{% block title %}Dashboard | client_new  !{% endblock %}
+{% block title %}Dashboard | client_edit{% endblock %}
 
 {% block body %}
-    <div class="m-grid m-grid--hor m-grid--root m-page">
-        {% include 'layouts/partials/_header.html.twig' %}
+    <div class="m-grid__item  m-grid__item--fluid m-wrapper">
+        <div class="m-subheader">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="m-subheader__title text-uppercase">
+                        Clients
+                    </h3>
+                </div>
+            </div>
+        </div>
 
-        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
-            {% include 'layouts/partials/_left_sidebar.html.twig' %}
-
-            <div class="m-grid__item  m-grid__item--fluid m-wrapper">
-
-                <div class="m-subheader">
-                    <div class="d-flex align-items-center">
-                        <div class="mr-auto">
-                            <h3 class="m-subheader__title text-uppercase">
-                                Clients
+        <div class="m-content">
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Create new Client
                             </h3>
                         </div>
                     </div>
                 </div>
-
-                <div class="m-content">
-                    <div class="m-portlet m-portlet--mobile">
-                        <div class="m-portlet__head">
-                            <div class="m-portlet__head-caption">
-                                <div class="m-portlet__head-title">
-                                    <h3 class="m-portlet__head-text">
-                                        Create new Client
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-portlet__body">
-                            {% include 'client/_form.html.twig' %}
-                        </div>
-                    </div>
+                <div class="m-portlet__body">
+                    {% include 'client/_form.html.twig' %}
                 </div>
-
             </div>
         </div>
     </div>
