@@ -2,12 +2,11 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class InvoiceItemFixtures extends Fixture
+class InvoiceItemFixtures extends BaseFixtures
 {
-    public function load(ObjectManager $manager)
+    public function loadData(ObjectManager $manager)
     {
         // $product = new Product();
         // $manager->persist($product);

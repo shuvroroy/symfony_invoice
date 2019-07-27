@@ -35,6 +35,16 @@
                     </span>
                 </a>
             </li>
+            <li class="m-menu__item {{ app.request.get('_route') == 'invoice_index' ? 'm-menu__item--active' : '' }}" aria-haspopup="true">
+                <a href="{{ path('invoice_index') }}" class="m-menu__link ">
+                    <i class="m-menu__link-icon flaticon-tabs"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">Invoices</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
             <li class="m-menu__section">
                 <h4 class="m-menu__section-text">
                     Components

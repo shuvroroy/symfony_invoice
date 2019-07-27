@@ -1,14 +1,14 @@
 {% extends 'layouts/master.html.twig' %}
 
-{% block title %}Dashboard | client_new{% endblock %}
+{% block title %}Dashboard | invoice_index{% endblock %}
 
 {% block content %}
-    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-grid__item  m-grid__item--fluid m-wrapper">
         <div class="m-subheader">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
                     <h3 class="m-subheader__title text-uppercase">
-                        Clients
+                        Invoices
                     </h3>
                 </div>
             </div>
@@ -20,13 +20,10 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Create new Client
+                                All Invoice
                             </h3>
                         </div>
                     </div>
-                </div>
-                <div class="m-portlet__body">
-                    {% include 'client/_form.html.twig' %}
                 </div>
             </div>
         </div>
