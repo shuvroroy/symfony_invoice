@@ -77,6 +77,12 @@
                                             Description
                                         </span>
                                     </th>
+                                    <th title="Field #6" class="m-datatable__cell m-datatable__cell--sort" data-field="
+                                            Contact
+                                        "><span style="width: 163px;">
+                                            Unit Price
+                                        </span>
+                                    </th>
                                     <th title="Field #4" class="m-datatable__cell m-datatable__cell--sort" data-field="
                                             Car Make
                                         "><span style="width: 163px;">
@@ -106,6 +112,9 @@
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
                                         <span style="width: 163px;" v-text="item.description"></span>
+                                    </td>
+                                    <td data-field="Order ID" class="m-datatable__cell">
+                                        <span style="width: 163px;" v-text="item.unitPrice"></span>
                                     </td>
                                     <td data-field="Order ID" class="m-datatable__cell">
                                         <span style="width: 163px;">${ item.createdAt | moment }</span>

@@ -31,6 +31,11 @@ class Product
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $unit_price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,6 +61,18 @@ class Product
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getUnitPrice(): ?float
+    {
+        return $this->unit_price;
+    }
+
+    public function setUnitPrice(float $unit_price): self
+    {
+        $this->unit_price = $unit_price;
 
         return $this;
     }

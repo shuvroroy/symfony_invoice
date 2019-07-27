@@ -13,6 +13,7 @@ class ProductFixtures extends BaseFixtures
             $product = new Product();
             $product->setName('Product-'. $i);
             $product->setDescription($this->faker->sentence);
+            $product->setUnitPrice($this->faker->numberBetween(100, 500));
             $manager->persist($product);
         }
 
