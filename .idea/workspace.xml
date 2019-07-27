@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c009ed1c-7d68-4e85-887d-8bab0dec6215" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layouts/partials/_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/partials/_header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layouts/partials/_left_sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/partials/_left_sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/edit.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +17,17 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>m_header_nav</find>
+      <find>HTML Table</find>
+      <find>username</find>
+      <find>pro</find>
+      <find>description</find>
+      <find>PaginationComponent</find>
+      <find>user4</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,7 +171,7 @@
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
-  <component name="ProjectId" id="1OaSPkwoGppSknoX3wtPi8GovUC" />
+  <component name="ProjectId" id="1OacU4TMd9lKxJdk7LUPQGbm2sN" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -221,9 +232,8 @@
       <workItem from="1564124276443" duration="8846000" />
       <workItem from="1564196803679" duration="93000" />
       <workItem from="1564196965268" duration="51000" />
-      <workItem from="1564197075828" duration="14331000" />
-      <workItem from="1564214202795" duration="144000" />
-      <workItem from="1564214410172" duration="3103000" />
+      <workItem from="1564197075828" duration="14931000" />
+      <workItem from="1564219173876" duration="716000" />
     </task>
     <servers />
   </component>
@@ -235,9 +245,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
