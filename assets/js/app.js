@@ -8,6 +8,6 @@ new Vue({
     el: '#app',
     delimiters: ['${', '}'],
     components: {
-        DataTableComponent,
+        DataTableComponent
     }
 });

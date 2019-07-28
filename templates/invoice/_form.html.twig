@@ -1,7 +1,119 @@
 {% form_theme form 'form/form_error.html.twig' %}
 
-{{ form_start(form, { 'attr': { 'class': 'm-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed', 'novalidate': 'novalidate' }}) }}
+{{ form_start(form, { 'attr': { 'class': 'm-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed   ', 'novalidate': 'novalidate' }}) }}
     <div class="m-portlet__body">
-
+        <div class="form-group m-form__group row">
+            {{ form_label(form.client, null, {
+                'label': 'Client',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.client, { 'attr': { 'class': 'custom-select' } }) }}
+                {{ form_errors(form.client) }}
+            </div>
+            {{ form_label(form.date, null, {
+                'label': 'Invoice Date',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.date, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.date) }}
+            </div>
+            {{ form_label(form.date, null, {
+                'label': 'Invoice',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.number, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.number) }}
+            </div>
+        </div>
+        <div class="form-group m-form__group row justify-content-end">
+            {{ form_label(form.due_date, null, {
+                'label': 'Due Date',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.due_date, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.due_date) }}
+            </div>
+            {{ form_label(form.po, null, {
+                'label': 'PO',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.po, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.po) }}
+            </div>
+        </div>
+        <div class="form-group m-form__group row justify-content-end">
+            {{ form_label(form.deposit, null, {
+                'label': 'Partial/Deposit',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.deposit, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.deposit) }}
+            </div>
+            {{ form_label(form.discount, null, {
+                'label': 'Discount',
+                'label_attr': {'class': 'col-lg-1 col-form-label'}
+            }) }}
+            <div class="col-lg-3">
+                {{ form_widget(form.discount, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.discount) }}
+            </div>
+        </div>
+        <div class="form-group m-form__group row">
+            <table class="table" width="100%">
+                <thead class="thead-default">
+                    <tr class="">
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Unit Cost</th>
+                        <th>Quantity</th>
+                        <th>Line Total</th>
+                    </tr>
+                </thead>
+                <tbody id="parentInvoice" data-child="{{ include('invoice/form_prototype.html.twig', {'form': form.invoiceItems.vars.prototype })|e('html_attr') }}">
+                    {% for index, item in form.invoiceItems %}
+                        <li>
+                            {% include "invoice/form_prototype.html.twig" with {form: item} %}
+                        </li>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-sm btn-accent" id="addRow">Add More</button>
+        </div>
+        <div class="form-group m-form__group row justify-content-between">
+            <div class="col-lg-4">
+                {{ form_label(form.notes, null, {
+                    'label': 'Notes',
+                    'label_attr': {'class': 'col-lg-1 col-form-label'}
+                }) }}
+                {{ form_widget(form.notes, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_errors(form.notes) }}
+            </div>
+            <div class="col-lg-3">
+                <ul>
+                    <li class="d-flex justify-content-between mb-2">
+                        <h5>Subtotal</h5>
+                        <h5>$5000</h5>
+                    </li>
+                    <li class="d-flex justify-content-between mb-2">
+                        <h5>Discount</h5>
+                        <h5>$1000</h5>
+                    </li>
+                    <li class="d-flex justify-content-between mb-2">
+                        <h5>Balance Due</h5>
+                        <h5>$5000</h5>
+                    </li>
+                    <li class="d-flex justify-content-between mb-2">
+                        <h5>Grand Total</h5>
+                        <h5>$5000</h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 {{ form_end(form) }}

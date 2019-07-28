@@ -62,9 +62,19 @@ class Invoice
     private $client;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\InvoiceItem", mappedBy="invoice", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\InvoiceItem", mappedBy="invoice", orphanRemoval=true, cascade={"persist"})
      */
     private $invoiceItems;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $po;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $deposit;
 
     public function __construct()
     {
@@ -199,6 +209,30 @@ class Invoice
                 $invoiceItem->setInvoice(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPo(): ?string
+    {
+        return $this->po;
+    }
+
+    public function setPo(string $po): self
+    {
+        $this->po = $po;
+
+        return $this;
+    }
+
+    public function getDeposit(): ?float
+    {
+        return $this->deposit;
+    }
+
+    public function setDeposit(float $deposit): self
+    {
+        $this->deposit = $deposit;
 
         return $this;
     }

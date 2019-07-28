@@ -32,3 +32,25 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let addMore = document.querySelector('#addRow');
+            let parent = document.querySelector('#parentInvoice');
+            let child = parent.dataset.child;
+            let deleteIcon = '<td>\n' +
+                '        <button type="button" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only mt-1">\n' +
+                '            <i class="fa flaticon-delete"></i>\n' +
+                '        </button>\n' +
+                '    </td>';
+            child.concat(deleteIcon);
+            parent.insertAdjacentHTML('beforeend', child);
+
+            addMore.addEventListener('click', function (e) {
+                e.preventDefault();
+                parent.insertAdjacentHTML('beforeend', child);
+            });
+        });
+    </script>
+{% endblock %}

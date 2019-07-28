@@ -13,7 +13,7 @@ class ClientFixtures extends BaseFixtures
             $client = new Client();
             $client->setName($this->faker->name);
             $client->setEmail($this->faker->unique()->safeEmail);
-            $client->setPhone($this->faker->phoneNumber);
+            $client->setPhone($this->faker->e164PhoneNumber);
             $client->setAddress($this->faker->address);
 
             $manager->persist($client);
