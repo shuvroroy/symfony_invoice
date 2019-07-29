@@ -1,15 +1,15 @@
 <tr>
     <td>{{ form_widget(form.product, { 'attr': { 'class': 'custom-select w-100' } }) }}</td>
     <td>
-        <textarea id="" class="form-control m-input" disabled></textarea>
+        {{ form_widget(form.description, { 'attr': { 'class': 'form-control m-input' }})  }}
     </td>
     <td>
-        <input type="text" id="" class="form-control m-input" disabled/>
+        {{ form_widget(form.unit_price, { 'attr': { 'class': 'form-control m-input' }}) }}
     </td>
     <td>
-        {{ form_widget(form.qty, { 'attr': { 'class': 'form-control m-input' } }) }}
+        {{ form_widget(form.qty, { 'attr': { 'class': 'form-control m-input product_qty' } }) }}
     </td>
     <td>
-        <input type="text" id="" class="form-control m-input" disabled/>
+        {{ form_widget(form.lineTotal, { 'attr': { 'class': 'form-control m-input' } }) }}
     </td>
 </tr>

@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c009ed1c-7d68-4e85-887d-8bab0dec6215" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ClientFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ClientFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProductFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProductFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InvoiceItemType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InvoiceItemType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/InvoiceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InvoiceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/InvoiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/InvoiceRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/invoice/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/invoice/form_prototype.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/form_prototype.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/invoice/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/new.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -175,12 +172,6 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="777" />
-  </component>
   <component name="ProjectId" id="1OacU4TMd9lKxJdk7LUPQGbm2sN" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -248,7 +239,8 @@
       <workItem from="1564240272822" duration="68000" />
       <workItem from="1564240370100" duration="2841000" />
       <workItem from="1564282745896" duration="218000" />
-      <workItem from="1564282979403" duration="29413000" />
+      <workItem from="1564282979403" duration="29489000" />
+      <workItem from="1564368710974" duration="24191000" />
     </task>
     <servers />
   </component>

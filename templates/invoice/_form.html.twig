@@ -77,9 +77,9 @@
                 </thead>
                 <tbody id="parentInvoice" data-child="{{ include('invoice/form_prototype.html.twig', {'form': form.invoiceItems.vars.prototype })|e('html_attr') }}">
                     {% for index, item in form.invoiceItems %}
-                        <li>
+                        <tr>
                             {% include "invoice/form_prototype.html.twig" with {form: item} %}
-                        </li>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -113,6 +113,21 @@
                         <h5>$5000</h5>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+        <div class="m-form__actions m-form__actions--solid">
+            <div class="row">
+                <div class="col-lg-5"></div>
+                <div class="col-lg-7">
+                    <button type="submit" class="btn btn-success">
+                        {{ button_label|default('Save') }}
+                    </button>
+                    <a href="{{ path('invoice_index') }}" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </div>
             </div>
         </div>
     </div>

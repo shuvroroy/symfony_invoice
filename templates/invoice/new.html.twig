@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-portlet__body">
+                <div class="m-portlet__body" data-products="{{ products }}" id="products_data">
                     {% include 'invoice/_form.html.twig' %}
                 </div>
             </div>
@@ -35,21 +35,81 @@
 
 {% block javascripts %}
     <script>
+        function updateAllInfo() {
+
+        }
+
+        function updateDescriptionAndUnitPrice() {
+            let products = JSON.parse(document.querySelector('#products_data').dataset.products);
+            let selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.addEventListener('change', function (e) {
+                    if (e.target.id.includes('client')) return;
+                    let selectProduct = products.filter(product => {
+                        return product.id == e.target.value;
+                    });
+
+                    let identifier = e.target.dataset.id;
+                    document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = selectProduct[0].description;
+                    document.querySelector('#invoice_invoiceItems_'+ identifier +'_unit_price').value = selectProduct[0].unitPrice;
+                })
+            });
+        }
+        function deleteProductRow(e) {
+            console.log(e);
+        }
+        
+        function calculateLineTotal(allQtyInputs) {
+            allQtyInputs.forEach((qtyInput) => {
+                qtyInput.addEventListener('blur', function (e) {
+                    let id = e.target.id.split('_')[2];
+
+                    let qty = document.querySelector('#invoice_invoiceItems_'+ id +'_qty').value;
+                    let price = document.querySelector('#invoice_invoiceItems_'+ id +'_unit_price').value;
+
+                    document.querySelector('#invoice_invoiceItems_'+ id +'_lineTotal').value = qty * price;
+                })
+            });
+        }
+        
+        function addProductRow(parent, child)
+        {
+            let index = parent.querySelectorAll('tr').length + 1;
+            child = child.replace(/__name__/g, index);
+            parent.insertAdjacentHTML('beforeend', child);
+        }
+
+        function addDeleteButton(parent)
+        {
+            let deleteIcon = '<td>\n' +
+                '        <button onclick="deleteProductRow()" type="button" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only mt-1 deleteNode">\n' +
+                '            <i class="fa flaticon-delete"></i>\n' +
+                '        </button>\n' +
+                '    </td>';
+
+            parent.insertAdjacentHTML('beforeend', deleteIcon);
+        }
+
         document.addEventListener('DOMContentLoaded', function(){
             let addMore = document.querySelector('#addRow');
             let parent = document.querySelector('#parentInvoice');
             let child = parent.dataset.child;
-            let deleteIcon = '<td>\n' +
-                '        <button type="button" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only mt-1">\n' +
-                '            <i class="fa flaticon-delete"></i>\n' +
-                '        </button>\n' +
-                '    </td>';
-            child.concat(deleteIcon);
-            parent.insertAdjacentHTML('beforeend', child);
+
+            // Add rew row
+            addProductRow(parent, child);
+
+            // Update description and unit price based on product
+            updateDescriptionAndUnitPrice();
+
+            var allQtyInputs = document.querySelectorAll('.product_qty');
+            calculateLineTotal(allQtyInputs);
 
             addMore.addEventListener('click', function (e) {
                 e.preventDefault();
-                parent.insertAdjacentHTML('beforeend', child);
+                addProductRow(parent, child);
+                addDeleteButton(parent.lastChild);
+                allQtyInputs = document.querySelectorAll('.product_qty');
+                calculateLineTotal(allQtyInputs);
             });
         });
     </script>

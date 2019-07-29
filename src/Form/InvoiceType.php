@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,21 +32,13 @@ class InvoiceType extends AbstractType
                 'format' => 'yyyy-MM-dd',
             ])
             ->add('notes')
-            ->add('sub_total', null, [
-                'attr' => [
-                    'readonly' => 'readonly'
-                ]
-            ])
+            ->add('sub_total', HiddenType::class)
             ->add('discount', null, [
                 'attr' => [
                     'readonly' => 'readonly'
                 ]
             ])
-            ->add('total', null, [
-                'attr' => [
-                    'readonly' => 'readonly'
-                ]
-            ])
+            ->add('total', HiddenType::class)
             ->add('po')
             ->add('deposit')
             ->add('client', EntityType::class, [
@@ -58,10 +51,8 @@ class InvoiceType extends AbstractType
 
         $builder->add('invoiceItems', CollectionType::class, [
             'entry_type' => InvoiceItemType::class,
-            'entry_options' => [
-                'label' => false
-            ],
             'allow_add' => true,
+            'allow_delete' => true,
         ]);
     }
 
