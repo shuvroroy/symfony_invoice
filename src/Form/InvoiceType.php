@@ -33,11 +33,7 @@ class InvoiceType extends AbstractType
             ])
             ->add('notes')
             ->add('sub_total', HiddenType::class)
-            ->add('discount', null, [
-                'attr' => [
-                    'readonly' => 'readonly'
-                ]
-            ])
+            ->add('discount')
             ->add('total', HiddenType::class)
             ->add('po')
             ->add('deposit')

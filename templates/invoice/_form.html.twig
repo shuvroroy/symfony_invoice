@@ -52,7 +52,7 @@
                 'label_attr': {'class': 'col-lg-1 col-form-label'}
             }) }}
             <div class="col-lg-3">
-                {{ form_widget(form.deposit, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_widget(form.deposit, { 'attr': { 'class': 'form-control m-input', 'onblur': 'calculateBalanceDue()' } }) }}
                 {{ form_errors(form.deposit) }}
             </div>
             {{ form_label(form.discount, null, {
@@ -60,7 +60,10 @@
                 'label_attr': {'class': 'col-lg-1 col-form-label'}
             }) }}
             <div class="col-lg-3">
-                {{ form_widget(form.discount, { 'attr': { 'class': 'form-control m-input' } }) }}
+                <div class="input-group">
+                    {{ form_widget(form.discount, { 'attr': { 'class': 'form-control m-input', 'onBlur': 'calculateDiscount()' } }) }}
+                    <span class="input-group-addon" id="basic-addon2">%</span>
+                </div>
                 {{ form_errors(form.discount) }}
             </div>
         </div>
@@ -98,19 +101,19 @@
                 <ul>
                     <li class="d-flex justify-content-between mb-2">
                         <h5>Subtotal</h5>
-                        <h5>$5000</h5>
+                        <h5 id="subTotal">0.00</h5>
                     </li>
                     <li class="d-flex justify-content-between mb-2">
                         <h5>Discount</h5>
-                        <h5>$1000</h5>
+                        <h5 id="discount">0.00</h5>
                     </li>
                     <li class="d-flex justify-content-between mb-2">
                         <h5>Balance Due</h5>
-                        <h5>$5000</h5>
+                        <h5 id="balanceDue">0.00</h5>
                     </li>
                     <li class="d-flex justify-content-between mb-2">
                         <h5>Grand Total</h5>
-                        <h5>$5000</h5>
+                        <h5 id="grandTotal">0.00</h5>
                     </li>
                 </ul>
             </div>

@@ -1,5 +1,5 @@
-<tr>
-    <td>{{ form_widget(form.product, { 'attr': { 'class': 'custom-select w-100' } }) }}</td>
+<tr id="row-__name__">
+    <td>{{ form_widget(form.product, { 'attr': { 'class': 'custom-select w-100', 'onchange': 'updateDescriptionAndUnitPrice(this)' } }) }}</td>
     <td>
         {{ form_widget(form.description, { 'attr': { 'class': 'form-control m-input' }})  }}
     </td>
@@ -7,9 +7,12 @@
         {{ form_widget(form.unit_price, { 'attr': { 'class': 'form-control m-input' }}) }}
     </td>
     <td>
-        {{ form_widget(form.qty, { 'attr': { 'class': 'form-control m-input product_qty' } }) }}
+        {{ form_widget(form.qty, { 'attr': { 'class': 'form-control m-input product_qty', 'onblur': 'calculateLineTotal(this)' } }) }}
     </td>
     <td>
-        {{ form_widget(form.lineTotal, { 'attr': { 'class': 'form-control m-input' } }) }}
+        {{ form_widget(form.lineTotal, { 'attr': { 'class': 'form-control m-input lineTotal' } }) }}
+    </td>
+    <td>
+        <button onclick="deleteProductRow(this)" type="button" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only mt-1 deleteNode" id="__name__">X</button>
     </td>
 </tr>
