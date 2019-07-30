@@ -16,8 +16,10 @@ class InvoiceItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('unit_price', null, [
-                'disabled' => 'true'
+            ->add('unitPrice', null, [
+                'attr' => [
+                    'readonly' => 'true'
+                ]
             ])
             ->add('qty')
             ->add('description', TextareaType::class, [

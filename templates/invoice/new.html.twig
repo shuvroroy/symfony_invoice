@@ -56,7 +56,7 @@
             });
 
             document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = selectProduct.length ? selectProduct[0].description : '' ;
-            document.querySelector('#invoice_invoiceItems_'+ identifier +'_unit_price').value = selectProduct.length ? selectProduct[0].unitPrice : '';
+            document.querySelector('#invoice_invoiceItems_'+ identifier +'_unitPrice').value = selectProduct.length ? selectProduct[0].unitPrice : '';
 
             calculateLineTotal(element);
             calculateDiscount();
@@ -67,7 +67,7 @@
             let lineTotal = '';
             let id = element.id.split('_')[2];
             let qty = document.querySelector('#invoice_invoiceItems_'+ id +'_qty').value;
-            let price = document.querySelector('#invoice_invoiceItems_'+ id +'_unit_price').value;
+            let price = document.querySelector('#invoice_invoiceItems_'+ id +'_unitPrice').value;
 
             if (qty !== '' && price !== '') {
                 lineTotal = (qty * price).toFixed(2);
@@ -89,6 +89,7 @@
             });
 
             document.querySelector('#subTotal').textContent = subTotal.toFixed(2);
+            document.querySelector('#invoice_sub_total').value = subTotal.toFixed(2);
         }
 
         function calculateDiscount() {
@@ -128,6 +129,7 @@
 
             let total = subTotal - discount;
             document.querySelector('#grandTotal').textContent = total.toFixed(2);
+            document.querySelector('#invoice_total').value = total.toFixed(2);
         }
 
         document.addEventListener('DOMContentLoaded', function(){
