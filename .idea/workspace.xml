@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c009ed1c-7d68-4e85-887d-8bab0dec6215" name="Default Changelist" comment="">
+    <list default="true" id="7495970d-e9d7-4331-9e34-ec75d7a73254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/InvoiceItemType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InvoiceItemType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/invoice/form_prototype.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/form_prototype.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/invoice/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InvoiceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InvoiceType.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

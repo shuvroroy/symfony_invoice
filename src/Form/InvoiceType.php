@@ -47,6 +47,7 @@ class InvoiceType extends AbstractType
 
         $builder->add('invoiceItems', CollectionType::class, [
             'entry_type' => InvoiceItemType::class,
+            'by_reference' => false,
             'allow_add' => true,
             'allow_delete' => true,
         ]);
