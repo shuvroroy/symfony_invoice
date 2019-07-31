@@ -49,6 +49,8 @@ class InvoiceController extends AbstractController
             $entityManager->persist($invoice);
             $entityManager->flush();
 
+            $this->addFlash('success', 'You just create your invoice successfully.');
+
             return $this->redirectToRoute('invoice_index');
         }
 
