@@ -56,6 +56,23 @@
                 const end = start + this.perPage;
                 return data.slice(start, end);
 
+            },
+            filteredInvoiceList() {
+                let data = this.items.filter(item => {
+                    return item.number.includes(this.search) ||
+                        item.client.name.toLowerCase().includes(this.search.toLowerCase());
+                });
+
+                if (data.length <= this.perPage) {
+                    this.next = false;
+                    this.prev = false;
+                }
+
+                this.totalPage = Math.ceil(data.length / this.perPage);
+                const start = this.pageNumber * this.perPage;
+                const end = start + this.perPage;
+                return data.slice(start, end);
+
             }
         },
         methods:{

@@ -23,12 +23,14 @@ class InvoiceController extends AbstractController
     /**
      * @Route("/", name="invoice_index", methods={"GET"})
      */
-    public function index()
+    public function index(InvoiceRepository $invoiceRepository)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $jsonInvoices = $this->generateJsonData($invoiceRepository->findAll());
+
         return $this->render('invoice/index.html.twig', [
-            'controller_name' => 'InvoiceController',
+            'invoices' => $jsonInvoices
         ]);
     }
 
@@ -54,17 +56,46 @@ class InvoiceController extends AbstractController
             return $this->redirectToRoute('invoice_index');
         }
 
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $jsonProducts = $serializer->serialize($productRepository->findAll(), 'json');
+        $jsonProducts = $this->generateJsonData($productRepository->findAll());
 
         return $this->render('invoice/new.html.twig', [
             'invoice' => $invoice,
             'products' => $jsonProducts,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="invoice_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Invoice $invoice): Response
+    {
+        $form = $this->createForm(InvoiceType::class, $invoice);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('invoice_index');
+        }
+
+        return $this->render('invoice/edit.html.twig', [
+            'product' => $invoice,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    protected function generateJsonData($data)
+    {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        return $serializer->serialize($data, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
     }
 }

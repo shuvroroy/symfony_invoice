@@ -48,7 +48,7 @@ class Invoice
     /**
      * @ORM\Column(type="float")
      */
-    private $discount;
+    private $discount = 0.00;
 
     /**
      * @ORM\Column(type="float")
@@ -74,7 +74,7 @@ class Invoice
     /**
      * @ORM\Column(type="float")
      */
-    private $deposit;
+    private $deposit = 0;
 
     public function __construct()
     {

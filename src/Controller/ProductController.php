@@ -34,7 +34,11 @@ class ProductController extends AbstractController
 
         $serializer = new Serializer($normalizers, $encoders);
 
-        $jsonProducts = $serializer->serialize($products, 'json');
+        $jsonProducts = $serializer->serialize($products, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
 
         return $this->render('product/index.html.twig', [
             'products' => $jsonProducts,

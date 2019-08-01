@@ -33,7 +33,11 @@ class ClientController extends AbstractController
 
         $serializer = new Serializer($normalizers, $encoders);
 
-        $jsonClient = $serializer->serialize($clients, 'json');
+        $jsonClient = $serializer->serialize($clients, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
 
         return $this->render('client/index.html.twig', [
             'clients' => $jsonClient,
