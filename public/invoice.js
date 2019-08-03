@@ -1,6 +1,25 @@
+function getProductById(identifier, id) {
+    if (id == '') {
+        document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = '';
+        document.querySelector('#invoice_invoiceItems_'+ identifier +'_unitPrice').value = '';
+        return;
+    }
+    let url = `http://localhost:8000/api/products/${id}`;
+    let request = new Request(url, { method: 'GET' });
+    fetch(request)
+        .then(response => response.json())
+        .then(response => {
+            let product = JSON.parse(response.data);
+            document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = product.description;
+            document.querySelector('#invoice_invoiceItems_'+ identifier +'_unitPrice').value = product.unitPrice;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
 function addProductRow(parent, child) {
-    let index = parent.querySelectorAll('tr').length + 1;
-    child = child.replace(/__name__/g, index);
+    let index = parent.querySelectorAll('tr').length;
+    child = child.replace(/__name__/g, (index - 1));
     parent.insertAdjacentHTML('beforeend', child);
 }
 
@@ -12,15 +31,7 @@ function deleteProductRow(element) {
 }
 
 function updateDescriptionAndUnitPrice(element) {
-    let identifier = element.dataset.id;
-    let products = JSON.parse(document.querySelector('#products_data').dataset.products);
-    let selectProduct = products.filter(product => {
-        return product.id == element.value;
-    });
-
-    document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = selectProduct.length ? selectProduct[0].description : '' ;
-    document.querySelector('#invoice_invoiceItems_'+ identifier +'_unitPrice').value = selectProduct.length ? selectProduct[0].unitPrice : '';
-
+    getProductById(element.dataset.id, element.value);
     calculateLineTotal(element);
     calculateDiscount();
     calculateBalanceDue();
@@ -94,14 +105,6 @@ function calculateTotal() {
     document.querySelector('#grandTotal').textContent = total.toFixed(2);
     document.querySelector('#invoice_total').value = total.toFixed(2);
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-    let addMore = document.querySelector('#addRow');
-    let parent = document.querySelector('#parentInvoice');
-    let child = parent.dataset.child;
-
-    addProductRow(parent, child);
-    addMore.addEventListener('click', function (e) {
-        addProductRow(parent, child);
-    });
-});
+function updateAll() {
+    
+}

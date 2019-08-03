@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-portlet__body" data-products="{{ products }}" id="products_data">
+                <div class="m-portlet__body" id="products_data">
                     {% include 'invoice/_form.html.twig' %}
                 </div>
             </div>
@@ -35,4 +35,16 @@
 
 {% block javascripts %}
     <script src="{{ asset('invoice.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let addMore = document.querySelector('#addRow');
+            let parent = document.querySelector('#parentInvoice');
+            let child = parent.dataset.child;
+
+            addProductRow(parent, child);
+            addMore.addEventListener('click', function (e) {
+                addProductRow(parent, child);
+            });
+        });
+    </script>
 {% endblock %}

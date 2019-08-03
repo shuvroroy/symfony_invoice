@@ -35,4 +35,23 @@
 
 {% block javascripts %}
     <script src="{{ asset('invoice.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let addMore = document.querySelector('#addRow');
+            let parent = document.querySelector('#parentInvoice');
+            let child = parent.dataset.child;
+            console.log(parent.childNodes);
+            parent.removeChild(parent.childNodes[0]);
+            let existingChild = parent.querySelectorAll('tr');
+
+            existingChild.forEach((ch, index) => {
+                ch.replace(/__name__/g, (index));
+            });
+
+            addProductRow(parent, child);
+            addMore.addEventListener('click', function (e) {
+                addProductRow(parent, child);
+            });
+        });
+    </script>
 {% endblock %}

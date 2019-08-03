@@ -6,14 +6,11 @@ use App\Entity\Invoice;
 use App\Form\InvoiceType;
 use App\Repository\InvoiceRepository;
 use App\Repository\ProductRepository;
+use App\Utils\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/invoice")
@@ -23,11 +20,15 @@ class InvoiceController extends AbstractController
     /**
      * @Route("/", name="invoice_index", methods={"GET"})
      */
-    public function index(InvoiceRepository $invoiceRepository)
+    public function index(InvoiceRepository $invoiceRepository, Serializer $serializer)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $jsonInvoices = $this->generateJsonData($invoiceRepository->findAll());
+        $jsonInvoices = $serializer->serialize($invoiceRepository->findAll(), 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
 
         return $this->render('invoice/index.html.twig', [
             'invoices' => $jsonInvoices
@@ -56,11 +57,8 @@ class InvoiceController extends AbstractController
             return $this->redirectToRoute('invoice_index');
         }
 
-        $jsonProducts = $this->generateJsonData($productRepository->findAll());
-
         return $this->render('invoice/new.html.twig', [
             'invoice' => $invoice,
-            'products' => $jsonProducts,
             'form' => $form->createView(),
         ]);
     }
@@ -82,20 +80,6 @@ class InvoiceController extends AbstractController
         return $this->render('invoice/edit.html.twig', [
             'product' => $invoice,
             'form' => $form->createView(),
-        ]);
-    }
-
-    protected function generateJsonData($data)
-    {
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
-
-        return $serializer->serialize($data, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
         ]);
     }
 }
