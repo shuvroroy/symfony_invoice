@@ -5,14 +5,11 @@ namespace App\Controller;
 use App\Entity\Client;
 use App\Form\ClientType;
 use App\Repository\ClientRepository;
+use App\Utils\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/client")
@@ -22,16 +19,11 @@ class ClientController extends AbstractController
     /**
      * @Route("/", name="client_index", methods={"GET"})
      */
-    public function index(ClientRepository $clientRepository): Response
+    public function index(ClientRepository $clientRepository, Serializer $serializer): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $clients = $clientRepository->findAll();
-
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
 
         $jsonClient = $serializer->serialize($clients, 'json', [
             'circular_reference_handler' => function ($object) {

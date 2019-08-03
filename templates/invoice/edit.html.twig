@@ -40,12 +40,12 @@
             let addMore = document.querySelector('#addRow');
             let parent = document.querySelector('#parentInvoice');
             let child = parent.dataset.child;
-            console.log(parent.childNodes);
+
             parent.removeChild(parent.childNodes[0]);
             let existingChild = parent.querySelectorAll('tr');
 
             existingChild.forEach((ch, index) => {
-                ch.replace(/__name__/g, (index));
+                ch.id.replace(/__name__/g, (index));
             });
 
             addProductRow(parent, child);
