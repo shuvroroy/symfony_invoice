@@ -45,10 +45,13 @@
             let existingChild = parent.querySelectorAll('tr');
 
             existingChild.forEach((ch, index) => {
-                ch.id.replace(/__name__/g, (index));
+                let element = ch.querySelector(`#invoice_invoiceItems_${index}_product`);
+                element.dataset.id = index;
+                ch.id = `row-${index}`;
+                updateDescriptionAndUnitPrice(element);
             });
 
-            addProductRow(parent, child);
+            // addProductRow(parent, child);
             addMore.addEventListener('click', function (e) {
                 addProductRow(parent, child);
             });

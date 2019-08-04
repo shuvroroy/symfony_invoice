@@ -2,9 +2,10 @@ function getProductById(identifier, id) {
     if (id == '') {
         document.querySelector('#invoice_invoiceItems_'+ identifier +'_description').value = '';
         document.querySelector('#invoice_invoiceItems_'+ identifier +'_unitPrice').value = '';
+        document.querySelector('#invoice_invoiceItems_'+ identifier +'_qty').value = '';
         return;
     }
-    let url = `http://localhost:8000/api/products/${id}`;
+    let url = `http://127.0.0.1:8000/api/products/${id}`;
     let request = new Request(url, { method: 'GET' });
     fetch(request)
         .then(response => response.json())
@@ -17,9 +18,10 @@ function getProductById(identifier, id) {
             console.log(error);
         });
 }
+
 function addProductRow(parent, child) {
     let index = parent.querySelectorAll('tr').length;
-    child = child.replace(/__name__/g, (index - 1));
+    child = child.replace(/__name__/g, index);
     parent.insertAdjacentHTML('beforeend', child);
 }
 
@@ -104,7 +106,4 @@ function calculateTotal() {
     let total = subTotal - discount;
     document.querySelector('#grandTotal').textContent = total.toFixed(2);
     document.querySelector('#invoice_total').value = total.toFixed(2);
-}
-function updateAll() {
-    
 }

@@ -16,7 +16,11 @@ class ProductController extends AbstractController
      */
     public function show(Product $product, Serializer $serializer): JsonResponse
     {
-        $jsonProducts = $serializer->serialize($product, 'json');
+        $jsonProducts = $serializer->serialize($product, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
 
         return $this->json([
             'data' => $jsonProducts,

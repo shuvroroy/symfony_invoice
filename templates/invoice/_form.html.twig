@@ -80,9 +80,7 @@
                 </thead>
                 <tbody id="parentInvoice" data-child="{{ include('invoice/form_prototype.html.twig', {'form': form.invoiceItems.vars.prototype })|e('html_attr') }}">
                     {% for index, item in form.invoiceItems %}
-                        <tr>
-                            {% include "invoice/form_prototype.html.twig" with {form: item} %}
-                        </tr>
+                        {% include "invoice/form_prototype.html.twig" with {form: item} %}
                     {% endfor %}
                 </tbody>
             </table>

@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7495970d-e9d7-4331-9e34-ec75d7a73254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/invoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/invoice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Api/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Api/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/invoice/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/invoice/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/edit.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -251,7 +252,8 @@
       <workItem from="1564457656984" duration="15713000" />
       <workItem from="1564474360869" duration="12302000" />
       <workItem from="1564645622517" duration="2381000" />
-      <workItem from="1564801444082" duration="14539000" />
+      <workItem from="1564801444082" duration="15256000" />
+      <workItem from="1564890470774" duration="8599000" />
     </task>
     <servers />
   </component>
