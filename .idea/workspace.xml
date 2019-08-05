@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7495970d-e9d7-4331-9e34-ec75d7a73254" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/invoice/invoice_pdf.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/invoice_pdf.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -255,7 +254,7 @@
       <workItem from="1564645622517" duration="2381000" />
       <workItem from="1564801444082" duration="15256000" />
       <workItem from="1564890470774" duration="16853000" />
-      <workItem from="1564974566928" duration="6785000" />
+      <workItem from="1564974566928" duration="7096000" />
     </task>
     <servers />
   </component>
