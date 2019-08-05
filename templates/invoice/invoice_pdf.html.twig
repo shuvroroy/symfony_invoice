@@ -126,25 +126,25 @@
                     <tr class="invoice-table__row invoice-table__row--summary" style="padding-top: 20px;">
                         <td colspan="5">
                             <label>Subtotal:</label>
-                            <span>${{ invoice.subTotal }}</span>
+                            <span>${{ invoice.subTotal|number_format(2) }}</span>
                         </td>
                     </tr>
                     <tr class="invoice-table__row invoice-table__row--summary">
                         <td colspan="5">
                             <label>Discount ({{ invoice.discount }}%):</label>
-                            <span>${{ ((invoice.subTotal/100) * invoice.discount) }}</span>
+                            <span>${{ ((invoice.subTotal/100) * invoice.discount)|number_format(2) }}</span>
                         </td>
                     </tr>
                     <tr class="invoice-table__row invoice-table__row--summary">
                         <td colspan="5">
                             <label>Deposite:</label>
-                            <span>${{ invoice.deposit }}</span>
+                            <span>${{ invoice.deposit|number_format(2) }}</span>
                         </td>
                     </tr>
                     <tr class="invoice-table__row invoice-table__row--summary">
                         <td colspan="5">
                             <label>Total:</label>
-                            <span>${{ invoice.total }}</span>
+                            <span>${{ invoice.total|number_format(2) }}</span>
                         </td>
                     </tr>
                 </table>
