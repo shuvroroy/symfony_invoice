@@ -5,7 +5,7 @@ function getProductById(identifier, id) {
         document.querySelector('#invoice_invoiceItems_'+ identifier +'_qty').value = '';
         return;
     }
-    let url = `http://127.0.0.1:8000/api/products/${id}`;
+    let url = `http://localhost:8000/api/products/${id}`;
     let request = new Request(url, { method: 'GET' });
     fetch(request)
         .then(response => response.json())

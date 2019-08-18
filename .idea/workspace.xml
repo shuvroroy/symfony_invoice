@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7495970d-e9d7-4331-9e34-ec75d7a73254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/invoice/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/invoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/invoice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/invoice/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/invoice/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
