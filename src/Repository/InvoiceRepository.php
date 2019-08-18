@@ -19,18 +19,6 @@ class InvoiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Invoice::class);
     }
 
-    public function getUniqueInvoiceNumber()
-    {
-        $randomInvoiceNumber = rand(111111, 999999);
-        $invoice = $this->findOneBy(['number' => $randomInvoiceNumber]);
-
-        if ($invoice) {
-            $this->getUniqueInvoiceNumber();
-        }
-
-        return $randomInvoiceNumber;
-    }
-
     // /**
     //  * @return Invoice[] Returns an array of Invoice objects
     //  */
