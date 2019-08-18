@@ -19,12 +19,12 @@
                 {{ form_widget(form.date, { 'attr': { 'class': 'form-control m-input' } }) }}
                 {{ form_errors(form.date) }}
             </div>
-            {{ form_label(form.date, null, {
+            {{ form_label(form.number, null, {
                 'label': 'Invoice',
                 'label_attr': {'class': 'col-lg-1 col-form-label'}
             }) }}
             <div class="col-lg-3">
-                {{ form_widget(form.number, { 'attr': { 'class': 'form-control m-input' } }) }}
+                {{ form_widget(form.number, { 'attr': { 'class': 'form-control m-input', 'placeholder': 'Auto Generated' } }) }}
                 {{ form_errors(form.number) }}
             </div>
         </div>
