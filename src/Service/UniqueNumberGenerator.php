@@ -13,6 +13,7 @@ class UniqueNumberGenerator
     {
         $this->entityManager = $entityManager;
     }
+
     public function getUniqueNumber()
     {
         $randomInvoiceNumber = rand(111111, 999999);
